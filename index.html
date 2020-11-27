@@ -157,6 +157,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/25/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2345.jpg">
+      <meta itemprop="name" content="Johnson CHEN">
+      <meta itemprop="description" content="The best time to plant a tree was twenty years ago. The second-best time is now. ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cpa To Coder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/25/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">红宝书学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-25 17:28:36" itemprop="dateCreated datePublished" datetime="2020-11-25T17:28:36+08:00">2020-11-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-26 23:02:50" itemprop="dateModified" datetime="2020-11-26T23:02:50+08:00">2020-11-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-this-用法及相关原理"><a href="#1-this-用法及相关原理" class="headerlink" title="1. this 用法及相关原理"></a>1. this 用法及相关原理</h2><ul>
+<li><p>在 JavaScript 中 this 不是固定不变的，即绝大数情况this是无法指定的，始终指向调用它的人（所有者），它会随着执行环境的改变而改变。</p>
+<ul>
+<li><p>在方法中，this 表示该方法所属的对象。</p>
+</li>
+<li><p>如果单独使用，this 表示全局对象。在浏览器中，window 就是该全局对象为 [<strong>object Window</strong>]:</p>
+</li>
+<li><p>在函数中，this 表示全局对象。在函数中，函数的所属者默认绑定到 this 上。</p>
+<p>在浏览器中，<strong>this</strong> 表示 函数的所有者，window 就是该全局对象为 [<strong>object Window</strong>]:</p>
+</li>
+<li><p>在函数中，在严格模式下，函数是没有绑定到 this 上，this 是未定义的(undefined)。</p>
+</li>
+<li><p>在事件中，this 表示接收事件的元素。</p>
+</li>
+<li><p>在 JavaScript 中函数也是对象，对象则有方法，apply 和 call 就是函数对象的方法。这两个方法异常强大，他们允许切换函数执行的上下文环境（context），即 this 绑定的对象。</p>
+</li>
+<li><p><img src="%E7%BA%A2%E5%AE%9D%E4%B9%A6%E5%AD%A6%E4%B9%A0.assets/image-20201126121355727.png" alt="image-20201126121355727"></p>
+</li>
+<li><p>从上面四个结果不难看出:</p>
+<p>call 、bind 、 apply 这三个函数的第一个参数都是 this 的指向对象，第二个参数差别就来了：</p>
+<p>call 的参数是直接放进去的，第二第三第 n 个参数全都用逗号分隔，直接放到后面 **obj.myFun.call(db,’成都’, … ,’string’ )**。</p>
+<p>apply 的所有参数都必须放在一个数组里面传进去 **obj.myFun.apply(db,[‘成都’, …, ‘string’ ])**。</p>
+<p>bind 除了返回是函数以外，它 的参数和 call 一样。</p>
+<p>当然，三者的参数不限定是 string 类型，允许是各种类型，包括函数 、 object 等等！</p>
+<h2 id="2-原型-原型链"><a href="#2-原型-原型链" class="headerlink" title="2.原型/原型链"></a>2.原型/原型链</h2></li>
+</ul>
+</li>
+<li><p><img src="%E7%BA%A2%E5%AE%9D%E4%B9%A6%E5%AD%A6%E4%B9%A0.assets/image-20201125233301189.png" alt="image-20201125233301189"></p>
+</li>
+<li><p><img src="%E7%BA%A2%E5%AE%9D%E4%B9%A6%E5%AD%A6%E4%B9%A0.assets/image-20201125233418970.png" alt="image-20201125233418970"></p>
+</li>
+<li><p>实例中的指针仅指向原型，而不指向构造函数</p>
+</li>
+</ul>
+<h2 id="3-闭包"><a href="#3-闭包" class="headerlink" title="3.闭包"></a>3.闭包</h2><h2 id="4-面向对象相关"><a href="#4-面向对象相关" class="headerlink" title="4.面向对象相关"></a>4.面向对象相关</h2><p>+ </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/23/react%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -188,7 +287,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-25 00:06:21" itemprop="dateModified" datetime="2020-11-25T00:06:21+08:00">2020-11-25</time>
+                <time title="修改时间：2020-11-28 00:54:23" itemprop="dateModified" datetime="2020-11-28T00:54:23+08:00">2020-11-28</time>
               </span>
 
           
@@ -211,10 +310,49 @@
 <li>组件化：从UI界面角度分析，把一些可复用的UI元素，抽离为单独的组件</li>
 </ul>
 <h4 id="3-虚拟DOM和DIFF算法"><a href="#3-虚拟DOM和DIFF算法" class="headerlink" title="3. 虚拟DOM和DIFF算法"></a>3. 虚拟DOM和DIFF算法</h4><ul>
-<li><p>虚拟DOM：用JS对象的形式来模拟页面上DOM的嵌套关系，目的是为了实现页面元素的高效更新。</p>
+<li>虚拟DOM：用JS对象的形式来模拟页面上DOM的嵌套关系，目的是为了实现页面元素的高效更新。</li>
+<li>tree diff / component diff / element diff，最小化页面重绘</li>
+</ul>
+<h4 id="4-单页APP（SPA）的挑战"><a href="#4-单页APP（SPA）的挑战" class="headerlink" title="4.单页APP（SPA）的挑战"></a>4.单页APP（SPA）的挑战</h4><ul>
+<li><p>如何保持数据与UI同步更新</p>
 </li>
-<li><p>tree diff / component diff / element diff</p>
+<li><p>如何提高DOM操作效率</p>
 </li>
+<li><p>使用HTML开发UI界面异常复杂</p>
+</li>
+<li><h3 id="二、主体内容："><a href="#二、主体内容：" class="headerlink" title="二、主体内容："></a>二、主体内容：</h3><h4 id="1-bind（this）"><a href="#1-bind（this）" class="headerlink" title="1.bind（this）"></a>1.bind（this）</h4></li>
+</ul>
+<p>新添加方法内部的this默认不是组件对象，而是undefined，所以需要bind强制绑定，</p>
+<p>所以组件中实际使用的方法是bind返回的新方法。</p>
+<p><img src="react%E5%AD%A6%E4%B9%A0.assets/image-20201126145254334.png" alt="image-20201126145254334"></p>
+<p><img src="react%E5%AD%A6%E4%B9%A0.assets/image-20201126145332493.png" alt="image-20201126145332493"></p>
+<h4 id="2-生命周期函数"><a href="#2-生命周期函数" class="headerlink" title="2.生命周期函数"></a>2.生命周期函数</h4><ul>
+<li><p>函数列表<br>componentWillMount :  在组件渲染之前执行</p>
+<p>componentDidMount : 在组件渲染之后执行 ，开启监听，发送ajax请求</p>
+<p>shouldComponentUpdate: 返回true和false， true代表允许改变，false代表不允许改变</p>
+<p>componentWillUpdate: 数据在改变之前执行（state，props）</p>
+<p>componentDidUpdate: 数据修改完成（state，props）</p>
+<p>componentWillReveiceProps: props发生改变执行</p>
+<p>componentWillUnmount: 组件卸载前执行，收尾工作，如清理定时器。</p>
+</li>
+</ul>
+<h4 id="3-setState更新是同步还是异步"><a href="#3-setState更新是同步还是异步" class="headerlink" title="3.setState更新是同步还是异步"></a>3.setState更新是同步还是异步</h4><ul>
+<li><p>setState 会引起视图的重绘</p>
+</li>
+<li><p>在可控的情况下异步，在非可控的情况下同步</p>
+</li>
+<li><p>key的作用在于减少重复绘制；</p>
+</li>
+</ul>
+<h4 id="4-React面向组件编程"><a href="#4-React面向组件编程" class="headerlink" title="4.React面向组件编程"></a>4.React面向组件编程</h4><ul>
+<li>工厂函数组件（简单组件）：没有状态，效率高</li>
+<li>ES6类组件（复杂组件）</li>
+<li>数据保存在哪个组件内？看数据是某个组件需要，还是某些组件需要（给共同的父组件）</li>
+<li>子组件不能直接改变父组件的状态。状态在哪个组件，更新状态的行为就应该定义在哪</li>
+<li>组件化编写功能的流程</li>
+<li>1、拆分组件</li>
+<li>2、实现静态组件（只有静态界面，没有动态数据和交互）</li>
+<li>3、实现动态组件  1）实现初始化数据动态显示  2）实现交互功能</li>
 </ul>
 
       
@@ -591,7 +729,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-23 00:15:07" itemprop="dateModified" datetime="2020-11-23T00:15:07+08:00">2020-11-23</time>
+                <time title="修改时间：2020-11-28 00:54:14" itemprop="dateModified" datetime="2020-11-28T00:54:14+08:00">2020-11-28</time>
               </span>
 
           
@@ -665,6 +803,19 @@
 </tbody></table>
 <h2 id="2-replace"><a href="#2-replace" class="headerlink" title="2.replace"></a>2.replace</h2><p>支持字符串模式和正则表达式模式（支持全局和忽略大小写）</p>
 <p><code>replace(/a/g, &#39;&#39;)</code> 去掉所有的a</p>
+<h2 id="3-for-in-for-of"><a href="#3-for-in-for-of" class="headerlink" title="3.for in /for of"></a>3.for in /for of</h2><p>for in 遍历下标<br>for of 遍历值</p>
+<h2 id="4-DATE相关"><a href="#4-DATE相关" class="headerlink" title="4.DATE相关"></a>4.DATE相关</h2><ul>
+<li><p>Date.toLocaleString()时间戳转化成正常时间</p>
+</li>
+<li><p>Date.getDay()  星期几</p>
+</li>
+<li><p>Date.getMonth() 几月（要加一）</p>
+</li>
+</ul>
+<h2 id="5-push和unshift"><a href="#5-push和unshift" class="headerlink" title="5.push和unshift"></a>5.push和unshift</h2><ul>
+<li>push是加在末尾</li>
+<li>unshift是加在第一个</li>
+</ul>
 
       
     </div>
@@ -1165,76 +1316,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/08/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/2345.jpg">
-      <meta itemprop="name" content="Johnson CHEN">
-      <meta itemprop="description" content="The best time to plant a tree was twenty years ago. The second-best time is now. ">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cpa To Coder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/08/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-08 08:02:38" itemprop="dateCreated datePublished" datetime="2020-11-08T08:02:38+08:00">2020-11-08</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1306,7 +1387,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
