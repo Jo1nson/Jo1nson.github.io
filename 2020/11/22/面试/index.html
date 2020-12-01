@@ -28,7 +28,7 @@
 <meta property="og:description" content="CSSQ1：怎么实现三列布局（左侧和右侧宽度固定，中间自适应）常见 CSS 布局  该问题主要想了解面试者的思维是否有局限性，实现该布局是一个比较常见并且方法很多的一种布局方式，并且可以引导面试者一步一步回答 CSS 相关的基础问题。   绝对定位 + 中间版块不给宽度 两侧浮动 + 中间自动撑开（使用 calc 动态计算宽度，设置对应宽度的 margin） flex，左右设置 flex-basi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-22T12:34:11.000Z">
-<meta property="article:modified_time" content="2020-11-30T08:41:38.385Z">
+<meta property="article:modified_time" content="2020-12-01T15:29:11.634Z">
 <meta property="article:author" content="Johnson CHEN">
 <meta name="twitter:card" content="summary">
 
@@ -190,7 +190,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-30 16:41:38" itemprop="dateModified" datetime="2020-11-30T16:41:38+08:00">2020-11-30</time>
+                <time title="修改时间：2020-12-01 23:29:11" itemprop="dateModified" datetime="2020-12-01T23:29:11+08:00">2020-12-01</time>
               </span>
 
           
@@ -230,16 +230,19 @@
 </ul>
 <p>Q 3-3: 你平时都是使用 sass/lass/styles 的哪些功能，sass 的计算属性对页面性能有影响吗？</p>
 <h2 id="Q4-如何在页面上画一个圆"><a href="#Q4-如何在页面上画一个圆" class="headerlink" title="Q4: 如何在页面上画一个圆"></a><strong>Q4: 如何在页面上画一个圆</strong></h2><ul>
-<li>SVG</li>
-<li>CANVAS</li>
-<li>css border-radius</li>
-<li>background</li>
-<li>map + area</li>
-<li>直接放一张圆形图片</li>
+<li><p>SVG(可伸缩矢量图形 (Scalable Vector Graphics))</p>
+</li>
+<li><p>CANVAS</p>
+</li>
+<li><pre><code class="javascript">var c=document.getElementById(&quot;myCanvas&quot;);
+var ctx=c.getContext(&quot;2d&quot;);
+ctx.beginPath();
+ctx.arc(95,50,40,0,2*Math.PI);
+ctx.stroke();
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- </span><br><span class="line"></span><br><span class="line">- css border-radius</span><br><span class="line"></span><br><span class="line">- background</span><br><span class="line"></span><br><span class="line">- map + area</span><br><span class="line"></span><br><span class="line">- 直接放一张圆形图片</span><br><span class="line"></span><br><span class="line">Q 4-1: 如何在页面上画一个椭圆</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;text</span><br><span class="line">&lt;style&gt;</span><br><span class="line">  .sector &#123;</span><br><span class="line">    width: 0;</span><br><span class="line">    height: 0;</span><br><span class="line">    border-width: 50px;</span><br><span class="line">    border-style: solid;</span><br><span class="line">    border-color: #f00 transparent transparent;</span><br><span class="line">    border-radius: 50px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
 </ul>
-<p>Q 4-1: 如何在页面上画一个椭圆</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  .sector &#123;</span><br><span class="line">    width: 0;</span><br><span class="line">    height: 0;</span><br><span class="line">    border-width: 50px;</span><br><span class="line">    border-style: solid;</span><br><span class="line">    border-color: #f00 transparent transparent;</span><br><span class="line">    border-radius: 50px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
 <p>Q 4-2: 如果圆边界模糊，有什么办法去锯齿</p>
 <blockquote>
 <p>这几个问题基本上可以了解到面试者平时都是怎么使用 CSS 的了，对于 CSS，我觉得够用就好，因为我们现在基本急太处理兼容性问题（有 babel 并且我们的项目不要求兼容 ie6 等古老的浏览器）</p>
@@ -267,20 +270,43 @@
 </ul>
 <p>Q: 1-5 怎么实现一个深拷贝</p>
 <ul>
-<li>JSON.parse() (但是如果里面有 function 和 undefined 不可用)</li>
-<li>lodash</li>
-<li>自己封装</li>
+<li><p>JSON.parse() (会忽略 <code>undefined</code>；会忽略 <code>symbol</code>；不能序列化函数；不能解决循环引用的对象)</p>
+</li>
+<li><pre><code>let a = &#123;
+    age: 1,
+     jobs: &#123;
+      first: &#39;FE&#39;
+ &#125;
+&#125;
+let b = JSON.parse(JSON.stringify(a))
+a.jobs.first = &#39;native&#39;
+console.log(b.jobs.first) // FE
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- lodash</span><br><span class="line"></span><br><span class="line">- 自己封装</span><br><span class="line"></span><br><span class="line">- &#96;&#96;&#96;javascript</span><br><span class="line">  function deepClone(obj) &#123;</span><br><span class="line">    function isObject(o) &#123;</span><br><span class="line">      return (typeof o &#x3D;&#x3D;&#x3D; &#39;object&#39; || typeof o &#x3D;&#x3D;&#x3D; &#39;function&#39;) &amp;&amp; o !&#x3D;&#x3D; null</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    if (!isObject(obj)) &#123;</span><br><span class="line">      throw new Error(&#39;非对象&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    let isArray &#x3D; Array.isArray(obj)</span><br><span class="line">    let newObj &#x3D; isArray ? [...obj] : &#123; ...obj &#125;</span><br><span class="line">    Reflect.ownKeys(newObj).forEach(key &#x3D;&gt; &#123;</span><br><span class="line">      newObj[key] &#x3D; isObject(obj[key]) ? deepClone(obj[key]) : obj[key]</span><br><span class="line">    &#125;)</span><br><span class="line">   </span><br><span class="line">    return newObj</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
 </ul>
 <p>Q: 1-6 null和undefined的差异</p>
 <p>相同点:</p>
 <ul>
-<li>在 if判断语句中,值都默认为 false</li>
-<li>大体上两者都是代表无,具体看差异 差异:</li>
-<li>null转为数字类型值为0,而undefined转为数字类型为 NaN(Not a Number)</li>
-<li>undefined是代表调用一个值而该值却没有赋值,这时候默认则为undefined</li>
-<li>null是一个很特殊的对象,最为常见的一个用法就是作为参数传入(说明该参数不是对象)</li>
-<li>设置为null的变量或者对象会被内存收集器回收</li>
+<li><p>在 if判断语句中,值都默认为 false</p>
+</li>
+<li><p>大体上两者都是代表无,具体看差异 差异:</p>
+</li>
+<li><p>null转为数字类型值为0,而undefined转为数字类型为 NaN(Not a Number)</p>
+</li>
+<li><p>undefined是代表调用一个值而该值却没有赋值,这时候默认则为undefined</p>
+</li>
+<li><p>null是一个很特殊的对象,最为常见的一个用法就是作为参数传入(说明该参数不是对象)</p>
+</li>
+<li><p>设置为null的变量或者对象会被内存收集器回收</p>
+</li>
 </ul>
+<p>Q: 1-7 数组的API有哪些？<br>直接修改原数组的：push(),unshift(), pop(),shift(), splice() ,reverse(), sort() fill(x,start,end) copyWithin(tochangeindex,changestart,changeend)</p>
+<p>返回新数组的： concat(),slice()</p>
+<p>返回字符串： join()</p>
+<p>位置或是否在数组内： indexOf() lastindexOf() includes()是否包括 find()满足条件的索引;</p>
+<p>遍历方法：forEach()所有元素执行一次，返回undefined;map()返回值新数组;filter()返回通过元素的新数组 ;every()所有都满足返回true;some()只要有一个元素满足就返回true；reduce(fn(pre,cur,index,arr),basevalue)累加器;reduceRight()从右边往左边加</p>
+<p>迭代器：arr.keys()返回索引迭代器；arr.values()返回迭代器，值；arr.entries()返回键值对。</p>
 <blockquote>
 <p>这个问题是一个 JS 基础相关的问题，可以考察面试者 JS 基本功</p>
 </blockquote>
@@ -304,8 +330,7 @@
 <h2 id="Q4-一句话概述什么是-promise"><a href="#Q4-一句话概述什么是-promise" class="headerlink" title="Q4: 一句话概述什么是 promise"></a><strong>Q4: 一句话概述什么是 promise</strong></h2><blockquote>
 <p>The Promise object is used for asynchronous computations. A Promise represents a single asynchronous operation that hasn’t completed yet, but is expected in the future.<br>译文：Promise对象用于异步操作，它表示一个尚未完成且预计在未来完成的异步操作。</p>
 </blockquote>
-<h2 id="Q-4-1-promise-解决了哪些问题"><a href="#Q-4-1-promise-解决了哪些问题" class="headerlink" title="Q 4-1: promise 解决了哪些问题"></a>Q 4-1: promise 解决了哪些问题</h2><h2 id="Q-4-2-在没有-promise-之前，怎么解决异步回调"><a href="#Q-4-2-在没有-promise-之前，怎么解决异步回调" class="headerlink" title="Q 4-2: 在没有 promise 之前，怎么解决异步回调"></a>Q 4-2: 在没有 promise 之前，怎么解决异步回调</h2><p><a href="https://link.zhihu.com/?target=https://link.juejin.im/?target=http://www.ruanyifeng.com/blog/2012/12/asynchronous%25EF%25BC%25BFjavascript.html">JS 异步回调的 4 种解决方案</a></p>
-<h2 id="Q-4-3-自己如何实现一个-promise"><a href="#Q-4-3-自己如何实现一个-promise" class="headerlink" title="Q 4-3: 自己如何实现一个 promise"></a>Q 4-3: 自己如何实现一个 promise</h2><ul>
+<h2 id="Q-4-1-promise-解决了哪些问题"><a href="#Q-4-1-promise-解决了哪些问题" class="headerlink" title="Q 4-1: promise 解决了哪些问题"></a>Q 4-1: promise 解决了哪些问题</h2><h2 id="Q-4-2-在没有-promise-之前，怎么解决异步回调"><a href="#Q-4-2-在没有-promise-之前，怎么解决异步回调" class="headerlink" title="Q 4-2: 在没有 promise 之前，怎么解决异步回调"></a>Q 4-2: 在没有 promise 之前，怎么解决异步回调</h2><h2 id="Q-4-3-自己如何实现一个-promise"><a href="#Q-4-3-自己如何实现一个-promise" class="headerlink" title="Q 4-3: 自己如何实现一个 promise"></a>Q 4-3: 自己如何实现一个 promise</h2><ul>
 <li><p>new Promise(fn) 返回一个promise对象</p>
 </li>
 <li><p>在fn 中指定异步等处理</p>
