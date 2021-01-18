@@ -157,6 +157,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2345.jpg">
+      <meta itemprop="name" content="Johnson CHEN">
+      <meta itemprop="description" content="The best time to plant a tree was twenty years ago. The second-best time is now. ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cpa To Coder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-18 23:18:34 / 修改时间：23:19:05" itemprop="dateCreated datePublished" datetime="2021-01-18T23:18:34+08:00">2021-01-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="一、限定符"><a href="#一、限定符" class="headerlink" title="一、限定符"></a>一、限定符</h3><h4 id="1、？"><a href="#1、？" class="headerlink" title="1、？"></a>1、？</h4><ul>
+<li>限定符，表示它前面这个字符d需要出现0次或者一次</li>
+<li>通俗来说，就是？前的字符可有可无<h4 id="2、"><a href="#2、" class="headerlink" title="2、*"></a>2、*</h4></li>
+<li>限定符，表示会匹配0个或者多个字符</li>
+</ul>
+<h4 id="3、"><a href="#3、" class="headerlink" title="3、+"></a>3、+</h4><ul>
+<li>限定符，表示会匹配出现1次以上的字符</li>
+</ul>
+<h4 id="4、-x-y"><a href="#4、-x-y" class="headerlink" title="4、{x, y}"></a>4、{x, y}</h4><ul>
+<li>限定符，表示字符出现次数为x到y次</li>
+</ul>
+<h4 id="5、（）"><a href="#5、（）" class="headerlink" title="5、（）"></a>5、（）</h4><ul>
+<li>用（）限定字符组合，其余用法同单个字符</li>
+</ul>
+<h3 id="二、“或”运算"><a href="#二、“或”运算" class="headerlink" title="二、“或”运算"></a>二、“或”运算</h3><p>a  (cat | dog)  匹配  a cat 或者 a dog， 括号必不可少</p>
+<h3 id="三-、字符类"><a href="#三-、字符类" class="headerlink" title="三 、字符类"></a>三 、字符类</h3><p>[abc]+ 方括号里面的内容代表要求匹配的字符只能取自它们<br>[a-z]代表所有的小写英文字符<br>[a-zA-Z]代表所有的英文字符<br>[a-zA-Z0-9]代表所有的英文字符和数字<br>[^0-9] 代表所有的非数字字符（包括换行符）</p>
+<h3 id="四、元字符"><a href="#四、元字符" class="headerlink" title="四、元字符"></a>四、元字符</h3><p>\d  数字字符<br>\w 单词字符,即所有的英文字符、数字及下划线<br>\s 空白符，包含Tab和换行符<br>\b 代表边界<br>\D 非数字字符<br>\W 非单词字符<br>\S 非空白字符<br>.  代表任意字符，但不包含换行符<br>^匹配行首<br>$匹配行尾</p>
+<h3 id="五、贪婪与懒惰匹配"><a href="#五、贪婪与懒惰匹配" class="headerlink" title="五、贪婪与懒惰匹配"></a>五、贪婪与懒惰匹配</h3><ul>
+<li>&lt;.+ &gt;  默认贪婪匹配“任意字符”</li>
+<li>&lt;.+ ?&gt;  ?会将默认的贪婪匹配切换为懒惰匹配</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/25/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1279,114 +1358,6 @@ console.log(b.jobs.first) // FE
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/08/markdown%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/2345.jpg">
-      <meta itemprop="name" content="Johnson CHEN">
-      <meta itemprop="description" content="The best time to plant a tree was twenty years ago. The second-best time is now. ">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cpa To Coder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/08/markdown%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Typora使用及Markdown基础教程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-08 08:04:24" itemprop="dateCreated datePublished" datetime="2020-11-08T08:04:24+08:00">2020-11-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-07 21:17:38" itemprop="dateModified" datetime="2020-11-07T21:17:38+08:00">2020-11-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>==（1）标题==</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h6 id="六级标题（-号个数代表标题级别1-6）"><a href="#六级标题（-号个数代表标题级别1-6）" class="headerlink" title="六级标题（#号个数代表标题级别1-6）"></a>六级标题（#号个数代表标题级别1-6）</h6><p>==（2）字体==</p>
-<p><strong>加粗</strong><br><em>倾斜</em><br><strong><em>斜体加粗</em></strong><br><del>删除线</del><br>==高亮==</p>
-<p>我是^上标^</p>
-<p>我是<del>下标</del> </p>
-<p>==（3）列表==</p>
-<ul>
-<li>一二三四五</li>
-<li>上山打老虎</li>
-<li>老虎没打到</li>
-<li>打到小松鼠  </li>
-</ul>
-<p>==（4）表格==</p>
-<table>
-<thead>
-<tr>
-<th>MON</th>
-<th>TUE</th>
-<th>WED</th>
-<th>THU</th>
-<th>FRI</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>上山</td>
-<td>上山</td>
-<td>上山</td>
-<td>上山</td>
-<td>上山</td>
-</tr>
-</tbody></table>
-<p>==（5）引用==</p>
-<blockquote>
-<p>一二三四五</p>
-<blockquote>
-<p>上山打老虎</p>
-<blockquote>
-<p>老虎没打到</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>==（6）分隔线==</p>
-<hr>
-<p>==（7）代码==<br><code>import xxx</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> maxDepth = <span class="function">(<span class="params">root</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">const</span> leftMaxDepth = maxDepth(root.left);</span><br><span class="line">  <span class="keyword">const</span> rightMaxDepth = maxDepth(root.right);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span> + <span class="built_in">Math</span>.max(leftMaxDepth, rightMaxDepth);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1458,7 +1429,7 @@ console.log(b.jobs.first) // FE
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
