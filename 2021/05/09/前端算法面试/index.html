@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、数组1、map 方法和forEach区别  map 方法在调用形式上与 forEach 无异，区别在于 map 方法会根据你传入的函数逻辑对数组中每个元素进行处理、进而返回一个全新的数组。  2、fill在填充二维数组时的问题 当你给 fill 传递一个入参时，如果这个入参的类型是引用类型，那么 fill 在填充坑位时填充的其实就是入参的引用。也就是说下图中虽然看似我们给7个坑位各初始化了一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端算法面试">
+<meta property="og:url" content="http://example.com/2021/05/09/%E5%89%8D%E7%AB%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/index.html">
+<meta property="og:site_name" content="Cpa To Coder">
+<meta property="og:description" content="一、数组1、map 方法和forEach区别  map 方法在调用形式上与 forEach 无异，区别在于 map 方法会根据你传入的函数逻辑对数组中每个元素进行处理、进而返回一个全新的数组。  2、fill在填充二维数组时的问题 当你给 fill 传递一个入参时，如果这个入参的类型是引用类型，那么 fill 在填充坑位时填充的其实就是入参的引用。也就是说下图中虽然看似我们给7个坑位各初始化了一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/05/09/%E5%89%8D%E7%AB%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95.assets/fc6a1f482c0c4b24bf791171c43167d9~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2020/4/6/1714e6b275ab6309?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="article:published_time" content="2021-05-09T07:34:03.000Z">
+<meta property="article:modified_time" content="2021-05-10T16:18:55.190Z">
+<meta property="article:author" content="Johnson CHEN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/05/09/%E5%89%8D%E7%AB%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95.assets/fc6a1f482c0c4b24bf791171c43167d9~tplv-k3u1fbpfcp-zoom-1.image">
+
+<link rel="canonical" href="http://example.com/2021/05/09/%E5%89%8D%E7%AB%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>前端算法面试 | Cpa To Coder</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Cpa To Coder</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/09/%E5%89%8D%E7%AB%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2345.jpg">
+      <meta itemprop="name" content="Johnson CHEN">
+      <meta itemprop="description" content="The best time to plant a tree was twenty years ago. The second-best time is now. ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cpa To Coder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          前端算法面试
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-09 15:34:03" itemprop="dateCreated datePublished" datetime="2021-05-09T15:34:03+08:00">2021-05-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-11 00:18:55" itemprop="dateModified" datetime="2021-05-11T00:18:55+08:00">2021-05-11</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一、数组"><a href="#一、数组" class="headerlink" title="一、数组"></a>一、数组</h2><p><strong>1、map 方法和forEach区别</strong></p>
+<blockquote>
+<p>map 方法在调用形式上与 forEach 无异，区别在于 map 方法会根据你传入的函数逻辑对数组中每个元素进行处理、进而返回一个全新的数组。</p>
+</blockquote>
+<p>2、fill在填充二维数组时的问题</p>
+<p>当你给 fill 传递一个入参时，如果这个入参的类型是引用类型，那么 fill 在填充坑位时填充的其实就是入参的引用。也就是说下图中虽然看似我们给7个坑位各初始化了一个数组：</p>
+<blockquote>
+<p>其实这7个数组对应了同一个引用、指向的是同一块内存空间，它们本质上是同一个数组。因此当你修改第0行第0个元素的值时，第1-6行的第0个元素的值也都会跟着发生改变。</p>
+</blockquote>
+<blockquote>
+<p>本着安全的原则，这里我推荐大家采纳的二维数组初始化方法非常简单（而且性能也不错）。直接用一个 for 循环来解决：</p>
+</blockquote>
+<p>JS比较特别。如果我们在一个数组中只定义了一种类型的元素，比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+
+<p>它是一个纯数字数组，那么对应的确实是连续内存。</p>
+<p>但如果我们定义了不同类型的元素：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="string">&#x27;haha&#x27;</span>, <span class="number">1</span>, &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>它对应的就是一段非连续的内存。此时，JS 数组不再具有数组的特征，其底层使用哈希映射分配内存空间，是由对象链表来实现的。</p>
+<p>说起来有点绕口，但大家谨记“JS 数组未必是真正的数组”即可。</p>
+<p><strong>链表的插入/删除效率较高，而访问效率较低；数组的访问效率较高，而插入效率较低。</strong></p>
+<p><strong>3、数组的应用</strong></p>
+<p>大家以后做算法题的时候，要有这样的一种本能：当发现自己的代码里有两层循环时，先反思一下，能不能用空间换时间，把它优化成一层循环。</p>
+<blockquote>
+<p>因为两层循环很多情况下都意味着 <code>O(n^2)</code> 的复杂度，这个复杂度非常容易导致你的算法超时。即便没有超时，在明明有一层遍历解法的情况下，你写了两层遍历，面试官对你的印象分会大打折扣。</p>
+</blockquote>
+<p><strong>空间换时间，Map 来帮忙</strong></p>
+<p>拿我们这道题来说，其实二层遍历是完全不必要的。</p>
+<blockquote>
+<p>大家记住一个结论：几乎所有的求和问题，都可以转化为求差问题。 这道题就是一个典型的例子，通过把求和问题转化为求差问题，事情会变得更加简单。</p>
+</blockquote>
+<p>（这里大家相信已经能察觉出来双指针法的使用场景了，一方面，它可以做到空间换时间；另一方面，它也可以帮我们降低问题的复杂度。）</p>
+<blockquote>
+<p>双指针法用在涉及求和、比大小类的数组题目里时，大前提往往是：该数组必须有序。否则双指针根本无法帮助我们缩小定位的范围，压根没有意义。因此这道题的第一步是将数组排序：</p>
+</blockquote>
+<p><strong>什么时候你需要联想到对撞指针？</strong></p>
+<p>这里我给大家两个关键字——“有序”和“数组”。</p>
+<p>没错，见到这两个关键字，立刻把双指针法调度进你的大脑内存。普通双指针走不通，立刻想对撞指针！</p>
+<p>即便数组题目中并没有直接给出“有序”这个关键条件，我们在发觉普通思路走不下去的时候，也应该及时地尝试手动对其进行排序试试看有没有新的切入点——没有条件，创造条件也要上。</p>
+<h2 id="二、链表"><a href="#二、链表" class="headerlink" title="二、链表"></a>二、链表</h2><p>在链表中，每一个结点的结构都包括了两部分的内容：数据域和指针域。JS 中的链表，是以嵌套的对象的形式来实现的：</p>
+<p>在涉及链表删除操作的题目中，重点不是定位目标结点，而是定位目标结点的前驱结点。做题时，完全可以只使用一个指针（引用），这个指针用来定位目标结点的前驱结点。</p>
+<blockquote>
+<p>删除的标准是：在链表的遍历过程中，无法再遍历到某个结点的存在。按照这个标准，要想遍历不到 node3，我们直接让它的前驱结点 node1 的 next 指针跳过它、指向 node3 的后继即可</p>
+</blockquote>
+<p><img src="%E5%89%8D%E7%AB%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95.assets/fc6a1f482c0c4b24bf791171c43167d9~tplv-k3u1fbpfcp-zoom-1.image" alt="img"></p>
+<p>如此一来，node3 就成为了一个完全不可抵达的结点了，它会被 JS 的垃圾回收器自动回收掉。</p>
+<p>如果说在命题时，数组和字符串的角色往往是“算法思想的载体”，那么链表本身就可以被认为是“命题的目的”。单在真题归纳解读环节，我们能讲的技巧、能做的题目已经有很多。结合实际面试中的命题规律，我把这些题目分为以下三类：</p>
+<ul>
+<li>链表的处理：合并、删除等（删除操作画个记号，重点中的重点！）</li>
+<li>链表的反转及其衍生题目</li>
+<li>链表成环问题及其衍生题目</li>
+</ul>
+<p><strong>思路分析</strong></p>
+<blockquote>
+<p>做链表处理类问题，大家要把握住一个中心思想——处理链表的本质，是处理链表结点之间的指针关系。</p>
+</blockquote>
+<p>其实在链表题中，经常会遇到这样的问题：链表的第一个结点，因为没有前驱结点，导致我们面对它无从下手。这时我们就可以用一个 dummy 结点来解决这个问题。 所谓 dummy 结点，就是咱们人为制造出来的第一个结点的前驱结点，这样链表中所有的结点都能确保有一个前驱结点，也就都能够用同样的逻辑来处理了。 dummy 结点能够帮助我们降低链表处理过程的复杂度，处理链表时，不设 dummy 结点思路可能会打不开；设了 dummy 结点的话，就算不一定用得上，也不会出错。所以笔者个人非常喜欢用 dummy 结点。有心的同学可能也会注意到，在本节的第一题“链表的合并”中，其实也有 dummy 结点的身影。</p>
+<p><a target="_blank" rel="noopener" href="http://interview.poetries.top/algorithm-interview/note/09-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E4%B8%8E%E5%A4%9A%E6%8C%87%E9%92%88%E2%80%94%E2%80%94%E7%8E%A9%E8%BD%AC%E9%93%BE%E8%A1%A8%E5%A4%8D%E6%9D%82%E6%93%8D%E4%BD%9C.html#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E4%B8%8E%E5%A4%9A%E6%8C%87%E9%92%88">#</a><strong>快慢指针与多指针</strong></p>
+<p>链表题目中，有一类会涉及到反复的遍历。涉及反复遍历的题目，题目本身虽然不会直接跟你说“你好，我是一道需要反复遍历的题目”，但只要你尝试用常规的思路分析它，你会发现它一定涉及反复遍历；同时，涉及反复遍历的题目，还有一个更明显的特征，就是它们往往会涉及相对复杂的链表操作，比如反转、指定位置的删除等等。</p>
+<blockquote>
+<p>解决这类问题，我们用到的是双指针中的“快慢指针”。快慢指针指的是两个一前一后的指针，两个指针往同一个方向走，只是一个快一个慢。快慢指针严格来说只能有俩，不过实际做题中，可能会出现一前、一中、一后的三个指针，这种超过两个指针的解题方法也叫“多指针法”。</p>
+</blockquote>
+<p>快慢指针+多指针，双管齐下，可以帮助我们解决链表中的大部分复杂操作问题。</p>
+<h2 id="三、树"><a href="#三、树" class="headerlink" title="三、树"></a>三、树</h2><p><strong>二叉树是指满足以下要求的树：</strong></p>
+<ul>
+<li>它可以没有根结点，作为一棵空树存在</li>
+<li>如果它不是空树，那么必须由根结点、左子树和右子树组成，且左右子树都是二叉树。如下图：</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714e6b275ab6309?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<blockquote>
+<p>注意，二叉树不能被简单定义为每个结点的度都是2的树。普通的树并不会区分左子树和右子树，但在二叉树中，左右子树的位置是严格约定、不能交换的。对应到图上来看，也就意味着 B 和 C、D 和 E、F 和 G 是不能互换的。</p>
+</blockquote>
+<h3 id="二叉树的编码实现"><a href="#二叉树的编码实现" class="headerlink" title="#二叉树的编码实现"></a><a target="_blank" rel="noopener" href="http://interview.poetries.top/algorithm-interview/note/03-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E2%80%94%E2%80%94%E4%BB%8E0%E5%88%B01%E6%8E%8C%E6%8F%A1%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%9C%80%E8%A6%81%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E4%B8%89%EF%BC%89.html#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%BC%96%E7%A0%81%E5%AE%9E%E7%8E%B0">#</a>二叉树的编码实现</h3><blockquote>
+<p>在 JS 中，二叉树使用对象来定义。它的结构分为三块：</p>
+</blockquote>
+<ul>
+<li>数据域</li>
+<li>左侧子结点（左子树根结点）的引用</li>
+<li>右侧子结点（右子树根结点）的引用</li>
+</ul>
+<blockquote>
+<p>在定义二叉树构造函数时，我们需要把左侧子结点和右侧子结点都预置为空：</p>
+</blockquote>
+<h2 id="四、字符串"><a href="#四、字符串" class="headerlink" title="四、字符串"></a>四、字符串</h2><blockquote>
+<p>同时，回文字符串还有另一个特性：如果从中间位置“劈开”，那么两边的两个子串在内容上是完全对称的。因此我们也可以结合对称性来做判断：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPalindrome</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 缓存字符串的长度</span></span><br><span class="line">    <span class="keyword">const</span> len = str.length</span><br><span class="line">    <span class="comment">// 遍历前半部分，判断和后半部分是否对称</span></span><br><span class="line">    <span class="function"><span class="title">for</span>(<span class="params"><span class="keyword">let</span> i=<span class="number">0</span>;i&lt;len/<span class="number">2</span>;i++</span>)</span> &#123;</span><br><span class="line">        <span class="function"><span class="title">if</span>(<span class="params">str[i]!==str[len-i-<span class="number">1</span>]</span>)</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（谨记这个对称的特性，非常容易用到）</p>
+<p>如何判断自己解决回文类问题的解法是否“高效”？其中一个很重要的标准，<strong>就是看你对回文字符串的对称特性利用得是否彻底。</strong></p>
+<p>字符串题干中若有“回文”关键字，那么做题时脑海中一定要冒出两个关键字——对称性 和 双指针。这两个工具一起上，足以解决大部分的回文字符串衍生问题。</p>
+<p>回到这道题上来，我们首先是初始化两个指针，一个指向字符串头部，另一个指向尾部：</p>
+<blockquote>
+<p>什么是捕获组？其实就是正则表达式中被小括号括住的部分。在这道题里，我们需要从字符串中提取的其实只有“+/-”符号以及其后面的数字而已，同时这个字符串需要满足 可能存在的空格+正负号+数字字符串+其它字符内容 这样的格式才算合法，那我们就可以通过这样写正则表达式，实现“匹配”和“提取”的双重目的：</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\s*([-\+]?[0-9]*).*/</span><br></pre></td></tr></table></figure>
+
+<p>针对正则基础比较薄弱的同学，我来解释一下上面这个正则表达式：</p>
+<ul>
+<li>首先，<code>\s</code> 这个符号，意味着空字符，它可以用来匹配回车、空格、换行等空白区域，这里，它用来被匹配空格。<em>这个符号，跟在其它符号后面，意味着“前面这个符号可以出现0次或多次。\s</em>，这里的意思就是空格出现0次或多次，都可被匹配到。</li>
+<li>接着 <code>()</code> 出现了。<code>()</code> 圈住的内容，就是我们要捕获起来额外存储的东西。</li>
+<li><code>[]</code>中的匹配符之间是“或”的关系，也就是说只要能匹配上其中一个就行了。这里<code>[]</code>中包括了<code>-</code>和<code>\+</code>，<code>-</code>不必说匹配的是对应字符，这个<code>\+</code>之所以加了一个斜杠符，是<code>-</code> 因为<code>+</code>本身是一个有特殊作用的正则匹配符，这里我们要让它回归<code>+</code>字符的本义，所以要用一个<code>\</code>来完成转义。</li>
+<li><code>[0-9]*</code>结合咱们前面铺陈的知识，这个就不难理解了，它的意思是 <code>0-9</code> 之间的整数，能匹配到0个或多个就算匹配成功。</li>
+<li>最后的 <code>.</code>这个是任意字符的意思，<code>.*</code>用于字符串尾部匹配非数字的任意字符。我们看到<code>.*</code>是被排除捕获组之外的，所以说这个东西其实也不会被额外存储，它被“摘除”了。</li>
+</ul>
+<p>JS 的正则相关方法中， test()方法返回的是一个布尔值，单纯判断“是否匹配”。要想获取匹配的结果，我们需要调度match()方法：</p>
+<p>match() 方法是一个在字符串中执行查找匹配的String方法，它返回一个数组，在未匹配到时会返回 null。</p>
+<p>如果我们的正则表达式尾部有 g 标志，match()会返回与完整正则表达式匹配的所有结果，但不会返回捕获组。</p>
+<p>这里我们没有使用g标志，match()就会返回第一个完整匹配（作为数组的第0项）及其相关的捕获组（作为数组的第1及第1+项）。</p>
+<p>这里我们只定义了一个捕获组，因此可以从 groups[1] 里拿到我们捕获的结果。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="正则表达式">
+      <i class="fa fa-chevron-left"></i> 正则表达式
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">一、数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%93%BE%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">二、链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%A0%91"><span class="nav-number">3.</span> <span class="nav-text">三、树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%BC%96%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.1.</span> <span class="nav-text">二叉树的编码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.</span> <span class="nav-text">四、字符串</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Johnson CHEN"
+      src="/images/2345.jpg">
+  <p class="site-author-name" itemprop="name">Johnson CHEN</p>
+  <div class="site-description" itemprop="description">The best time to plant a tree was twenty years ago. The second-best time is now. </div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Johnson CHEN</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
